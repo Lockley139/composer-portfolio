@@ -44,7 +44,103 @@ A modern, cinematic portfolio for a composer focused on **video games and film**
 
 5. **Contact form:** Connect the form to Formspree, Netlify Forms, or your backend; update the form `action` and the submit handler in `contact.html`.
 
-6. **Run locally:** `python3 -m http.server 8080` or `npx serve .` then open the URL in your browser.
+6. **Run locally (required for data to load):** You **must** use a local server — do not double-click `index.html` to open it. From the **project folder** (the one that contains `index.html` and `js/`), run either:
+   - `npx live-server --port=8080 --open=/index.html` (recommended; auto-refreshes when you save), or  
+   - `python3 -m http.server 8080` then open **http://localhost:8080** in your browser.  
+   If you open the site via `file://`, the browser may block loading `portfolio-data.js` and your content will not show.
+
+### Live reload (auto-refresh when you save)
+
+To have the browser **refresh automatically** whenever you save a file, use **live-server** instead of the basic server. From the project folder:
+
+```bash
+npx live-server --port=8080 --open=/index.html
+```
+
+This opens the site in your browser and reloads the page whenever you save an HTML, CSS, or JS file. No need to press Cmd+R / F5.  
+(Requires Node.js; if you don’t have it, install from [nodejs.org](https://nodejs.org).)
+
+**If your changes still don’t show:** Make sure the file is **saved** (Cmd+S). Try a **hard refresh**: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows). If you opened the site by double-clicking `index.html` (file://), use a local server or live-server instead so updates load correctly.
+
+**If you changed `js/portfolio-data.js` but the site looks the same:** The browser may be using a cached copy. Do a **hard refresh** (Cmd+Shift+R / Ctrl+Shift+R). Where updates appear: **Home** shows `featuredProjects`, `soundcloudTracks`, `testimonials`, `aboutPreview`, and the composer name/subtitle/showreel. **Portfolio** shows `gameProjects`, `filmVisualMedia`, `gameAudioSoundDesign`, and `music`. Make sure you’re on the right page.
+
+## Putting your site on GitHub (detailed)
+
+Follow these steps to get your site code on GitHub and (optionally) publish it with GitHub Pages.
+
+### Step 1: Open Terminal and go to your project folder
+
+```bash
+cd /Users/locklej/Documents/data_science/website
+```
+
+### Step 2: Choose: existing repo vs your own repo (Lockley139)
+
+**Option A — Use the repo that’s already connected**
+
+The project is already linked to `https://github.com/LockleyJake/composer-portfolio.git`. If that’s your repo (or you have access), skip to **Step 3**.
+
+**Option B — Use your GitHub account (Lockley139) with a new repo**
+
+1. On GitHub, log in as **Lockley139**.
+2. Click the **+** (top right) → **New repository**.
+3. **Repository name:** e.g. `composer-portfolio` (or any name you like).
+4. **Public**, leave “Add a README” **unchecked** (you already have files).
+5. Click **Create repository**.
+6. In Terminal, point this project at your new repo (replace `Lockley139` and repo name if different):
+
+   ```bash
+   git remote remove origin
+   git remote add origin https://github.com/Lockley139/composer-portfolio.git
+   ```
+
+   If you prefer SSH:
+
+   ```bash
+   git remote add origin git@github.com:Lockley139/composer-portfolio.git
+   ```
+
+### Step 3: Large files (hero video)
+
+GitHub rejects single files over **100 MB**. If `assets/videos/hero-bg.mp4` is bigger than that:
+
+- Either **don’t commit the video**: add to `.gitignore` and rely on the gradient fallback on the live site, or host the video elsewhere and change the `src` in `index.html`.
+- Or use **Git LFS** to store large files: [git-lfs.com](https://git-lfs.com).
+
+To ignore the hero video so it isn’t pushed:
+
+```bash
+echo "assets/videos/hero-bg.mp4" >> .gitignore
+```
+
+(Your site will still work; the hero will show the dark gradient if the file isn’t there.)
+
+### Step 4: Stage, commit, and push
+
+```bash
+git add -A
+git status
+git commit -m "Update portfolio: content, featured videos, testimonials, hero"
+git push -u origin main
+```
+
+- If Git asks for **username/password**: use your GitHub username and a **Personal Access Token** (not your account password). Create one: GitHub → **Settings** → **Developer settings** → **Personal access tokens** → **Tokens (classic)** → **Generate new token**. Give it `repo` scope.
+- If you get “rejected” or “failed to push”, run `git pull origin main` (fix any conflicts if needed), then `git push origin main` again.
+
+### Step 5: Turn on GitHub Pages (to view the site online)
+
+1. On GitHub, open **your repo** (e.g. `github.com/Lockley139/composer-portfolio`).
+2. Go to **Settings** → **Pages** (left sidebar).
+3. Under **Build and deployment**:
+   - **Source:** **Deploy from a branch**.
+   - **Branch:** `main` (or whatever branch you pushed).
+   - **Folder:** **/ (root)**.
+4. Click **Save**.
+5. Wait 1–2 minutes. Your site will be at:
+   - **https://lockley139.github.io/composer-portfolio/**  
+   (replace `composer-portfolio` with your repo name if different.)
+
+---
 
 ## Git & GitHub — work from multiple laptops
 
@@ -102,13 +198,17 @@ git push origin main
    - Run `git pull origin main` so you have the latest code.
 
 2. **Run the site locally**  
-   - In the project folder: `python3 -m http.server 8080` (or `npx serve .`).  
-   - Open **http://localhost:8080** in your browser.
+   - **Option A (with auto-refresh):**  
+     `npx live-server --port=8080 --open=/index.html`  
+     The browser will reload automatically when you save a file.  
+   - **Option B (manual refresh):**  
+     `python3 -m http.server 8080` then open **http://localhost:8080**.  
+     Refresh the browser (Cmd+R / F5) after each change.
 
 3. **Edit and preview**  
-   - Edit HTML/CSS/JS or `js/portfolio-data.js`.  
-   - Save the file, then **refresh the browser** (Cmd+R / F5) to see changes.  
-   - No build step; what you save is what the server serves.
+   - Edit `index.html`, CSS, JS, or `js/portfolio-data.js`.  
+   - **Save the file** (Cmd+S). With live-server the page updates automatically; otherwise refresh (Cmd+R).  
+   - **Changes not showing?** Save the file, then do a hard refresh: **Cmd+Shift+R** (Mac) or **Ctrl+Shift+R** (Windows). Don’t open the site via file:// — use the local server or live-server.
 
 4. **Commit and push when you’re done (or at a good stopping point)**  
    - `git add -A`  

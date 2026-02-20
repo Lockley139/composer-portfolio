@@ -48,23 +48,27 @@
     observer.observe(heroVideo);
   }
 
-  // --- Scroll-triggered fade-in ---
-  const fadeElements = document.querySelectorAll('.fade-in-up');
-  if (fadeElements.length && 'IntersectionObserver' in window) {
-    const fadeObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    fadeElements.forEach(function (el) {
-      fadeObserver.observe(el);
-    });
+  // --- Scroll-triggered fade-in (run once at load and once after so dynamic content is observed) ---
+  function observeFadeIn() {
+    var fadeElements = document.querySelectorAll('.fade-in-up:not(.visible)');
+    if (fadeElements.length && 'IntersectionObserver' in window) {
+      var fadeObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+      fadeElements.forEach(function (el) {
+        fadeObserver.observe(el);
+      });
+    }
   }
+  observeFadeIn();
+  setTimeout(observeFadeIn, 0);
 
   // --- Navbar background on scroll ---
   const header = document.getElementById('site-header');

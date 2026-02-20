@@ -98,13 +98,17 @@
     </div>
   </footer>
 
-  <script src="js/portfolio-data.js"></script>
+  <script src="js/portfolio-data.js?v=3"></script>
   <script src="js/portfolio.js"></script>
   <script src="js/main.js"></script>
   <script>
     (function () {
       var data = window.PORTFOLIO_DATA;
-      if (!data) return;
+      if (!data) {
+        console.error('PORTFOLIO_DATA did not load. Use a local server (e.g. npx live-server --port=8080) from the project folder.');
+        document.body.insertAdjacentHTML('afterbegin', '<div style="position:fixed;top:0;left:0;right:0;background:#b91c1c;color:white;padding:12px;text-align:center;z-index:9999;font-size:14px;">Portfolio data did not load. Hard refresh (Cmd+Shift+R) and ensure you opened this page via http://localhost:8080 (not file://).</div>');
+        return;
+      }
       var categories = [
         { id: 'category-game', key: 'gameProjects' },
         { id: 'category-film', key: 'filmVisualMedia' },
@@ -116,7 +120,7 @@
         var title = (p.title || 'Project').replace(/</g, '&lt;');
         var desc = (p.description || '').replace(/</g, '&lt;');
         var year = p.year || '';
-        return '<article class="project-card fade-in-up rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group">' +
+        return '<article class="project-card fade-in-up visible rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group">' +
           '<div class="aspect-[4/3] bg-white/5 overflow-hidden relative">' +
           '<img src="' + thumb + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\'">' +
           '<div class="absolute inset-0 flex items-center justify-center bg-zinc-900/80 text-white/60 text-4xl" style="display:none">♪</div>' +
@@ -133,6 +137,7 @@
           var card = document.createElement('div');
           card.innerHTML = renderCard(p);
           var el = card.firstElementChild;
+          if (!el) return;
           el.addEventListener('click', function () { if (window.openProject) window.openProject(p); });
           container.appendChild(el);
         });

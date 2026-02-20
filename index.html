@@ -47,7 +47,7 @@
       </div>
       <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
         <h1 id="hero-name" class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-4">Jake Lockley</h1>
-        <p class="text-lg sm:text-xl text-white/80 font-light mb-10">Composer for Games and Film!!
+        <p class="text-lg sm:text-xl text-white/80 font-light mb-10">Composer for Games and Film
         </p>
         <a href="#showreel" class="inline-block px-8 py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium">Watch Showreel</a>
       </div>
@@ -107,13 +107,14 @@
     <section class="py-24 md:py-32 px-6 border-t border-white/10">
       <div class="max-w-6xl mx-auto">
         <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Follow</h2>
-        <p class="text-white/70 mb-12 max-w-2xl fade-in-up stagger-1">Clips, behind-the-scenes, and updates on TikTok and Instagram.</p>
+        <p class="text-white/70 mb-12 max-w-2xl fade-in-up stagger-1">Updates on TikTok and Instagram.</p>
         <div id="social-embeds" class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in-up stagger-2">
-          <div class="rounded-lg overflow-hidden bg-white/5 aspect-[9/16] max-h-[500px] flex items-center justify-center">
-            <p class="text-white/50 text-sm px-4 text-center">Add your TikTok embed: TikTok → Share → Embed. Paste the iframe code in index.html inside #social-embeds.</p>
-          </div>
-          <div class="rounded-lg overflow-hidden bg-white/5 aspect-square max-h-[500px] flex items-center justify-center">
-            <p class="text-white/50 text-sm px-4 text-center">Add your Instagram embed: Instagram post → … → Embed. Paste the iframe in index.html inside #social-embeds.</p>
+          <!-- TikTok: Get embed from TikTok app or web → video → Share → Embed. Replace the div below with the iframe code they give you. -->
+          <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@jake_lockley" data-unique-id="jake_lockley" data-embed-type="creator" style="max-width: 780px; min-width: 288px;" > <section> <a target="_blank" href="https://www.tiktok.com/@jake_lockley?refer=creator_embed">@jake_lockley</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+          <!-- Instagram: Post → ⋯ (three dots) → Embed. Replace the div below with the iframe code they give you. -->
+          <div class="rounded-lg overflow-hidden bg-white/5 flex items-center justify-center min-h-[400px]">
+            <!-- PASTE INSTAGRAM EMBED IFRAME HERE (replace this comment and the placeholder text) -->
+            <p class="text-white/50 text-sm px-4 text-center">Instagram: Post → ⋯ → Embed → paste the iframe here.</p>
           </div>
         </div>
       </div>
@@ -132,15 +133,23 @@
     </div>
   </footer>
 
-  <script src="js/portfolio-data.js"></script>
+  <script src="js/portfolio-data.js?v=2"></script>
   <script src="js/portfolio.js"></script>
   <script src="js/main.js"></script>
   <script>
     (function () {
       var data = window.PORTFOLIO_DATA;
-      if (!data) return;
+      if (!data) {
+        console.error('PORTFOLIO_DATA did not load. Use a local server: npx live-server --port=8080 --open=/index.html');
+        var banner = document.createElement('div');
+        banner.style.cssText = 'position:fixed;top:0;left:0;right:0;background:#b91c1c;color:white;padding:12px;text-align:center;z-index:9999;font-size:14px;';
+        banner.innerHTML = 'Content from portfolio-data.js did not load. <strong>Run a local server</strong> (e.g. <code>npx live-server --port=8080 --open=/index.html</code> from the project folder) then open the URL it gives you. Do not open index.html by double-clicking.';
+        document.body.insertBefore(banner, document.body.firstChild);
+        return;
+      }
       var site = data.site || {};
-      document.getElementById('hero-name').textContent = site.composerName || 'Composer';
+      var heroName = document.getElementById('hero-name');
+      if (heroName) heroName.textContent = site.composerName || 'Composer';
       var showreelId = site.showreelYoutubeId;
       if (showreelId) {
         var el = document.querySelector('#showreel-embed iframe');
@@ -164,20 +173,40 @@
       if (testimContainer) {
         testimonials.forEach(function (t) {
           var block = document.createElement('blockquote');
-          block.className = 'fade-in-up';
-          block.innerHTML = '<p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-6">"' + (t.quote || '').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '"</p><footer class="text-white/60">— ' + (t.author || '').replace(/</g, '&lt;') + (t.project ? ' <span class="text-white/40">(' + t.project + ')</span>' : '') + '</footer>';
+          block.className = 'fade-in-up visible';
+          var safeQuote = (t.quote || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+          var safeAuthor = (t.author || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          block.innerHTML = '<p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-6">"' + safeQuote + '"</p><footer class="text-white/60">— ' + safeAuthor + (t.project ? ' <span class="text-white/40">(' + (t.project || '').replace(/</g, '&lt;') + ')</span>' : '') + '</footer>';
           testimContainer.appendChild(block);
         });
       }
-      if (site.aboutPreview) document.getElementById('about-preview-text').textContent = site.aboutPreview;
+      var aboutPreviewEl = document.getElementById('about-preview-text');
+      if (aboutPreviewEl && site.aboutPreview) aboutPreviewEl.textContent = site.aboutPreview;
       var featured = data.featuredProjects || [];
       var grid = document.getElementById('featured-projects-grid');
+      function getYoutubeId(v) {
+        if (!v) return '';
+        v = String(v).trim();
+        var m = v.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+        return m ? m[1] : v;
+      }
       if (grid) {
         featured.forEach(function (p, i) {
           var card = document.createElement('article');
-          card.className = 'project-card fade-in-up rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group';
-          var thumb = p.thumbnail || '';
-          card.innerHTML = '<div class="aspect-[4/3] bg-white/5 overflow-hidden relative"><img src="' + thumb + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\'"><div class="absolute inset-0 flex items-center justify-center bg-zinc-900/80 text-white/60 text-4xl" style="display:none">♪</div></div><div class="p-6"><span class="text-white/50 text-sm">' + (p.year || '') + '</span><h3 class="font-display text-xl font-medium text-white mt-1">' + (p.title || 'Project').replace(/</g, '&lt;') + '</h3><p class="text-white/60 text-sm mt-2">' + (p.description || '').replace(/</g, '&lt;') + '</p></div>';
+          card.className = 'project-card fade-in-up visible rounded-xl overflow-hidden bg-white/5 border border-white/10 group';
+          var title = (p.title || 'Project').replace(/</g, '&lt;');
+          var desc = (p.description || '').replace(/</g, '&lt;');
+          var year = p.year || '';
+          var media = p.media;
+          var youtubeId = media && media.type === 'youtube' && media.id ? getYoutubeId(media.id) : '';
+          var topHtml;
+          if (youtubeId) {
+            topHtml = '<div class="aspect-video bg-black overflow-hidden relative"><iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/' + youtubeId + '?rel=0" title="' + title + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>';
+          } else {
+            var thumb = p.thumbnail || '';
+            topHtml = '<div class="aspect-[4/3] bg-white/5 overflow-hidden relative"><img src="' + thumb + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\'"><div class="absolute inset-0 flex items-center justify-center bg-zinc-900/80 text-white/60 text-4xl" style="display:none">♪</div></div>';
+          }
+          card.innerHTML = topHtml + '<div class="p-6"><span class="text-white/50 text-sm">' + year + '</span><h3 class="font-display text-xl font-medium text-white mt-1">' + title + '</h3><p class="text-white/60 text-sm mt-2">' + desc + '</p></div>';
           card.addEventListener('click', function () { if (window.openProject) window.openProject(p); });
           grid.appendChild(card);
         });
