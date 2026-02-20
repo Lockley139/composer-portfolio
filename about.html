@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About the composer — background, approach, and credits." />
+  <title>About | Composer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-black text-white antialiased">
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="font-display text-2xl font-medium tracking-tight text-white hover:text-gray-300 transition-colors">Composer</a>
+      <button id="nav-toggle" type="button" class="md:hidden p-2 text-white" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <ul id="nav-menu" class="hidden md:flex flex-col md:flex-row gap-6 md:gap-8 list-none m-0 p-0 md:items-center absolute md:relative top-full left-0 right-0 md:top-auto md:left-auto md:right-auto py-4 md:py-0 px-6 md:px-0 bg-black/95 md:bg-transparent border-t md:border-0 border-white/10">
+        <li><a href="index.html" class="text-white/80 hover:text-white link-underline">Home</a></li>
+        <li><a href="portfolio.html" class="text-white/80 hover:text-white link-underline">Portfolio</a></li>
+        <li><a href="about.html" class="text-white/90 hover:text-white link-underline">About</a></li>
+        <li><a href="contact.html" class="text-white/80 hover:text-white link-underline">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="pt-24 md:pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-display text-4xl md:text-6xl font-light text-white mb-6 fade-in-up">About</h1>
+      <p class="text-white/70 text-lg leading-relaxed mb-8 fade-in-up stagger-1">
+        I write music for picture — film, television, and games. My work ranges from full orchestral scores to minimal electronic palettes, always in service of the story.
+      </p>
+      <p class="text-white/70 text-lg leading-relaxed mb-8 fade-in-up stagger-2">
+        Based between Los Angeles and London, I collaborate with directors and producers worldwide. Recent credits include narrative features, documentary series, and AAA game trailers.
+      </p>
+      <p class="text-white/70 text-lg leading-relaxed mb-12 fade-in-up stagger-3">
+        When I’m not in the studio, I’m usually exploring sound design, modular synthesis, or live performance. I believe the best scores are felt before they’re heard.
+      </p>
+
+      <section class="border-t border-white/10 pt-12 fade-in-up stagger-4">
+        <h2 class="font-display text-2xl font-medium text-white mb-6">Selected Credits</h2>
+        <ul class="space-y-4 text-white/80">
+          <li class="flex flex-wrap gap-2"><span class="text-white/50">Feature</span> — Film Title (Director, Year)</li>
+          <li class="flex flex-wrap gap-2"><span class="text-white/50">Documentary</span> — Series Name (Network, Year)</li>
+          <li class="flex flex-wrap gap-2"><span class="text-white/50">Game</span> — Game Title — Trailer (Studio, Year)</li>
+          <li class="flex flex-wrap gap-2"><span class="text-white/50">Short</span> — Short Film (Director, Year)</li>
+        </ul>
+      </section>
+
+      <div class="mt-16 fade-in-up stagger-5">
+        <a href="contact.html" class="link-underline text-white/90 hover:text-white font-medium">Get in touch →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-white/10 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="text-white/60 text-sm">© 2025 Composer Portfolio.</span>
+      <nav class="flex gap-6">
+        <a href="index.html" class="text-white/60 hover:text-white text-sm transition-colors">Home</a>
+        <a href="portfolio.html" class="text-white/60 hover:text-white text-sm transition-colors">Portfolio</a>
+        <a href="about.html" class="text-white/60 hover:text-white text-sm transition-colors">About</a>
+        <a href="contact.html" class="text-white/60 hover:text-white text-sm transition-colors">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
