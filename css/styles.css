@@ -131,3 +131,11 @@ button:focus-visible {
 .animate-bounce-slow {
   animation: bounce-slow 2.5s ease-in-out infinite;
 }
+
+/* Line clamp for project cards */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

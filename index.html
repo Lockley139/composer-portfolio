@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Film & media composer — original scores for film, TV, and games." />
-  <title>Composer Portfolio | Film & Media Music</title>
+  <meta name="description" content="Composer for Games and Film — original scores and sound design." />
+  <title>Composer for Games and Film</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -37,7 +37,7 @@
   </header>
 
   <main>
-    <!-- Hero: fullscreen with optional background video -->
+    <!-- 1. Hero -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 z-0 bg-gradient-to-b from-zinc-900 via-black to-black">
         <video id="hero-video" class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline poster="assets/images/hero-poster.jpg">
@@ -46,74 +46,83 @@
         <div class="hero-overlay absolute inset-0 z-10"></div>
       </div>
       <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
-        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-6 animate-fade-in">
-          Film & Media Music
-        </h1>
-        <p class="text-lg sm:text-xl text-white/80 font-light max-w-xl mx-auto mb-10">
-          Original scores for film, television, and interactive media.
+        <h1 id="hero-name" class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-4">Jake Lockley</h1>
+        <p class="text-lg sm:text-xl text-white/80 font-light mb-10">Composer for Games and Film!!
         </p>
-        <a href="portfolio.html" class="inline-block px-8 py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium">
-          View Work
-        </a>
+        <a href="#showreel" class="inline-block px-8 py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium">Watch Showreel</a>
       </div>
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce-slow">
-        <a href="#featured" class="text-white/60 hover:text-white transition-colors" aria-label="Scroll to featured">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <a href="#showreel" class="text-white/60 hover:text-white transition-colors" aria-label="Scroll to showreel">
+          <svg class="w-8 h-8 animate-bounce-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
       </div>
     </section>
 
-    <!-- Featured work -->
-    <section id="featured" class="py-24 md:py-32 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Featured Work</h2>
-        <p class="text-white/70 mb-16 max-w-2xl fade-in-up stagger-1">A selection of recent projects and collaborations.</p>
-        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-          <article class="fade-in-up stagger-2">
-            <div class="aspect-video bg-white/5 rounded-lg overflow-hidden mb-6 relative">
-              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Featured project" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 class="font-display text-2xl font-medium text-white mb-2">Featured Film Score</h3>
-            <p class="text-white/70">Original score for narrative feature. Orchestral and electronic palette.</p>
-          </article>
-          <article class="fade-in-up stagger-3">
-            <div class="aspect-video bg-white/5 rounded-lg overflow-hidden mb-6 relative">
-              <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/jNQXAC9IVRw?rel=0" title="Featured project 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 class="font-display text-2xl font-medium text-white mb-2">Documentary Theme</h3>
-            <p class="text-white/70">Main title and themes for documentary series.</p>
-          </article>
+    <!-- 2. Showreel -->
+    <section id="showreel" class="py-24 md:py-32 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Showreel</h2>
+        <p class="text-white/70 mb-12 max-w-2xl fade-in-up stagger-1">A selection of recent work for games and film.</p>
+        <div class="aspect-video rounded-lg overflow-hidden bg-black mb-16 fade-in-up stagger-2" id="showreel-embed">
+          <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/ega8_bnV1y8?rel=0" title="Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
-        <div class="mt-12 text-center fade-in-up stagger-4">
-          <a href="portfolio.html" class="link-underline text-white/90 hover:text-white font-medium">View full portfolio →</a>
+        <h3 class="font-display text-2xl md:text-3xl font-light text-white mb-6 fade-in-up">Top Tracks</h3>
+        <div id="soundcloud-tracks" class="space-y-6 fade-in-up stagger-3">
+          <!-- Injected by JS from portfolio-data.js -->
         </div>
       </div>
     </section>
 
-    <!-- Embedded video section -->
+    <!-- 3. Featured Projects -->
     <section class="py-24 md:py-32 px-6 bg-white/[0.02]">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Latest</h2>
-        <p class="text-white/70 mb-12 fade-in-up stagger-1">Watch the latest project showcase.</p>
-        <div class="aspect-video rounded-lg overflow-hidden bg-black fade-in-up stagger-2">
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Latest work" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Featured Projects</h2>
+        <p class="text-white/70 mb-16 max-w-2xl fade-in-up stagger-1">Highlights from recent game and film work.</p>
+        <div id="featured-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <!-- Injected by JS -->
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-24 px-6">
+    <!-- 4. Testimonials -->
+    <section class="py-24 md:py-32 px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-16 fade-in-up">Testimonials</h2>
+        <div id="testimonials-list" class="space-y-16">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. About preview -->
+    <section class="py-24 md:py-32 px-6 bg-white/[0.02]">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-6 fade-in-up">Let's create something together.</h2>
-        <p class="text-white/70 mb-10 fade-in-up stagger-1">For commissions, licensing, or collaboration inquiries.</p>
-        <a href="contact.html" class="inline-block px-8 py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium fade-in-up stagger-2">Get in Touch</a>
+        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-6 fade-in-up">About</h2>
+        <p id="about-preview-text" class="text-white/70 text-lg leading-relaxed mb-10 fade-in-up stagger-1">Composer for video games and film. I create immersive, narrative-driven music that supports story and emotion.</p>
+        <a href="about.html" class="inline-block px-8 py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 font-medium fade-in-up stagger-2">Learn more</a>
+      </div>
+    </section>
+
+    <!-- 6. Social (TikTok / Instagram) -->
+    <section class="py-24 md:py-32 px-6 border-t border-white/10">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-light text-white mb-4 fade-in-up">Follow</h2>
+        <p class="text-white/70 mb-12 max-w-2xl fade-in-up stagger-1">Clips, behind-the-scenes, and updates on TikTok and Instagram.</p>
+        <div id="social-embeds" class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in-up stagger-2">
+          <div class="rounded-lg overflow-hidden bg-white/5 aspect-[9/16] max-h-[500px] flex items-center justify-center">
+            <p class="text-white/50 text-sm px-4 text-center">Add your TikTok embed: TikTok → Share → Embed. Paste the iframe code in index.html inside #social-embeds.</p>
+          </div>
+          <div class="rounded-lg overflow-hidden bg-white/5 aspect-square max-h-[500px] flex items-center justify-center">
+            <p class="text-white/50 text-sm px-4 text-center">Add your Instagram embed: Instagram post → … → Embed. Paste the iframe in index.html inside #social-embeds.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-white/10 py-8 px-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="text-white/60 text-sm">© 2025 Composer Portfolio. All rights reserved.</span>
+      <span class="text-white/60 text-sm">© 2025 Composer. All rights reserved.</span>
       <nav class="flex gap-6">
         <a href="index.html" class="text-white/60 hover:text-white text-sm transition-colors">Home</a>
         <a href="portfolio.html" class="text-white/60 hover:text-white text-sm transition-colors">Portfolio</a>
@@ -123,6 +132,57 @@
     </div>
   </footer>
 
+  <script src="js/portfolio-data.js"></script>
+  <script src="js/portfolio.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var data = window.PORTFOLIO_DATA;
+      if (!data) return;
+      var site = data.site || {};
+      document.getElementById('hero-name').textContent = site.composerName || 'Composer';
+      var showreelId = site.showreelYoutubeId;
+      if (showreelId) {
+        var el = document.querySelector('#showreel-embed iframe');
+        if (el) el.src = 'https://www.youtube-nocookie.com/embed/' + showreelId + '?rel=0';
+      }
+      var tracks = site.soundcloudTracks || [];
+      var container = document.getElementById('soundcloud-tracks');
+      if (container) {
+        tracks.forEach(function (t) {
+          var url = (t.url || '').trim();
+          if (!url) return;
+          var embed = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) + '&color=ffffff&auto_play=false&hide_related=true';
+          var div = document.createElement('div');
+          div.className = 'rounded-lg overflow-hidden bg-white/5';
+          div.innerHTML = (t.title ? '<p class="text-white/80 text-sm mb-2 px-2">' + t.title + '</p>' : '') + '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="' + embed + '"></iframe>';
+          container.appendChild(div);
+        });
+      }
+      var testimonials = site.testimonials || [];
+      var testimContainer = document.getElementById('testimonials-list');
+      if (testimContainer) {
+        testimonials.forEach(function (t) {
+          var block = document.createElement('blockquote');
+          block.className = 'fade-in-up';
+          block.innerHTML = '<p class="text-xl md:text-2xl text-white/90 leading-relaxed mb-6">"' + (t.quote || '').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '"</p><footer class="text-white/60">— ' + (t.author || '').replace(/</g, '&lt;') + (t.project ? ' <span class="text-white/40">(' + t.project + ')</span>' : '') + '</footer>';
+          testimContainer.appendChild(block);
+        });
+      }
+      if (site.aboutPreview) document.getElementById('about-preview-text').textContent = site.aboutPreview;
+      var featured = data.featuredProjects || [];
+      var grid = document.getElementById('featured-projects-grid');
+      if (grid) {
+        featured.forEach(function (p, i) {
+          var card = document.createElement('article');
+          card.className = 'project-card fade-in-up rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group';
+          var thumb = p.thumbnail || '';
+          card.innerHTML = '<div class="aspect-[4/3] bg-white/5 overflow-hidden relative"><img src="' + thumb + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\'"><div class="absolute inset-0 flex items-center justify-center bg-zinc-900/80 text-white/60 text-4xl" style="display:none">♪</div></div><div class="p-6"><span class="text-white/50 text-sm">' + (p.year || '') + '</span><h3 class="font-display text-xl font-medium text-white mt-1">' + (p.title || 'Project').replace(/</g, '&lt;') + '</h3><p class="text-white/60 text-sm mt-2">' + (p.description || '').replace(/</g, '&lt;') + '</p></div>';
+          card.addEventListener('click', function () { if (window.openProject) window.openProject(p); });
+          grid.appendChild(card);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

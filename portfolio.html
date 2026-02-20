@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of film, TV, and game music projects." />
-  <title>Portfolio | Composer</title>
+  <meta name="description" content="Portfolio — game scores, film, sound design, and music." />
+  <title>Portfolio | Composer for Games and Film</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,23 +38,47 @@
 
   <main class="pt-24 md:pt-32 pb-24 px-6">
     <div class="max-w-7xl mx-auto">
-      <header class="mb-16 md:mb-20">
+      <header class="mb-20">
         <h1 class="font-display text-4xl md:text-6xl font-light text-white mb-4 fade-in-up">Portfolio</h1>
-        <p class="text-white/70 text-lg max-w-2xl fade-in-up stagger-1">Selected projects across film, television, and interactive media.</p>
+        <p class="text-white/70 text-lg max-w-2xl fade-in-up stagger-1">Game scores, film, sound design, and music.</p>
       </header>
 
-      <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-        <!-- Project cards injected by JS from projects-data.js -->
-      </div>
+      <!-- Category 1: Game Projects -->
+      <section class="mb-24">
+        <h2 class="font-display text-3xl md:text-4xl font-light text-white mb-2 fade-in-up">Game Projects</h2>
+        <p class="text-white/60 mb-10 fade-in-up">Original scores and music for video games.</p>
+        <div id="category-game" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"></div>
+      </section>
+
+      <!-- Category 2: Film & Visual Media -->
+      <section class="mb-24">
+        <h2 class="font-display text-3xl md:text-4xl font-light text-white mb-2 fade-in-up">Film & Visual Media</h2>
+        <p class="text-white/60 mb-10 fade-in-up">Short films and visual media scored.</p>
+        <div id="category-film" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"></div>
+      </section>
+
+      <!-- Category 3: Game Audio & Sound Design -->
+      <section class="mb-24">
+        <h2 class="font-display text-3xl md:text-4xl font-light text-white mb-2 fade-in-up">Game Audio & Sound Design</h2>
+        <p class="text-white/60 mb-10 fade-in-up">Sound design, foley, and interactive audio.</p>
+        <div id="category-sound" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"></div>
+      </section>
+
+      <!-- Category 4: Music -->
+      <section class="mb-24">
+        <h2 class="font-display text-3xl md:text-4xl font-light text-white mb-2 fade-in-up">Music</h2>
+        <p class="text-white/60 mb-10 fade-in-up">Released music, singles, and albums.</p>
+        <div id="category-music" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"></div>
+      </section>
     </div>
   </main>
 
-  <!-- Project detail modal -->
-  <div id="project-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div id="modal-backdrop" class="modal-backdrop absolute inset-0" aria-hidden="true"></div>
-    <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8 overflow-y-auto">
-      <div id="modal-content" class="modal-content relative w-full max-w-3xl bg-zinc-900/95 border border-white/10 rounded-xl shadow-2xl p-6 md:p-10 max-h-[90vh] overflow-y-auto">
-        <button id="modal-close" type="button" class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/10" aria-label="Close modal">
+  <!-- Project modal -->
+  <div id="project-modal" class="fixed inset-0 z-[100] hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div id="modal-backdrop" class="modal-backdrop absolute inset-0 cursor-pointer"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4 md:p-8 overflow-y-auto pointer-events-none">
+      <div id="modal-content" class="modal-content relative w-full max-w-3xl bg-zinc-900/95 border border-white/10 rounded-xl shadow-2xl p-6 md:p-10 max-h-[90vh] overflow-y-auto pointer-events-auto cursor-default">
+        <button id="modal-close" type="button" class="absolute top-4 right-4 p-2 text-white/70 hover:text-white transition-colors rounded-lg hover:bg-white/10" aria-label="Close">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
         <div id="modal-body"></div>
@@ -64,7 +88,7 @@
 
   <footer class="border-t border-white/10 py-8 px-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="text-white/60 text-sm">© 2025 Composer Portfolio.</span>
+      <span class="text-white/60 text-sm">© 2025 Composer.</span>
       <nav class="flex gap-6">
         <a href="index.html" class="text-white/60 hover:text-white text-sm transition-colors">Home</a>
         <a href="portfolio.html" class="text-white/60 hover:text-white text-sm transition-colors">Portfolio</a>
@@ -74,34 +98,46 @@
     </div>
   </footer>
 
-  <script src="js/projects-data.js"></script>
+  <script src="js/portfolio-data.js"></script>
   <script src="js/portfolio.js"></script>
+  <script src="js/main.js"></script>
   <script>
     (function () {
-      var grid = document.getElementById('portfolio-grid');
-      var projects = window.PORTFOLIO_PROJECTS || [];
-      projects.forEach(function (project, i) {
-        var thumb = project.thumbnail || 'assets/images/placeholder-1.jpg';
-        var card = document.createElement('article');
-        card.className = 'project-card fade-in-up rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group';
-        card.setAttribute('data-project-index', i);
-        card.innerHTML =
+      var data = window.PORTFOLIO_DATA;
+      if (!data) return;
+      var categories = [
+        { id: 'category-game', key: 'gameProjects' },
+        { id: 'category-film', key: 'filmVisualMedia' },
+        { id: 'category-sound', key: 'gameAudioSoundDesign' },
+        { id: 'category-music', key: 'music' },
+      ];
+      function renderCard(p) {
+        var thumb = p.thumbnail || '';
+        var title = (p.title || 'Project').replace(/</g, '&lt;');
+        var desc = (p.description || '').replace(/</g, '&lt;');
+        var year = p.year || '';
+        return '<article class="project-card fade-in-up rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer group">' +
           '<div class="aspect-[4/3] bg-white/5 overflow-hidden relative">' +
-          '<img src="' + (thumb || '') + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\'">' +
+          '<img src="' + thumb + '" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\'">' +
           '<div class="absolute inset-0 flex items-center justify-center bg-zinc-900/80 text-white/60 text-4xl" style="display:none">♪</div>' +
           '</div>' +
-          '<div class="p-6">' +
-          '<span class="text-white/50 text-sm">' + (project.year || '') + '</span>' +
-          '<h2 class="font-display text-xl font-medium text-white mt-1 group-hover:text-white/90">' + (project.title || 'Project') + '</h2>' +
-          '</div>';
-        card.addEventListener('click', function () {
-          if (window.openProject) window.openProject(project);
+          '<div class="p-6"><span class="text-white/50 text-sm">' + year + '</span>' +
+          '<h3 class="font-display text-xl font-medium text-white mt-1">' + title + '</h3>' +
+          '<p class="text-white/60 text-sm mt-2 line-clamp-2">' + desc + '</p></div></article>';
+      }
+      categories.forEach(function (cat) {
+        var container = document.getElementById(cat.id);
+        var list = data[cat.key] || [];
+        if (!container) return;
+        list.forEach(function (p) {
+          var card = document.createElement('div');
+          card.innerHTML = renderCard(p);
+          var el = card.firstElementChild;
+          el.addEventListener('click', function () { if (window.openProject) window.openProject(p); });
+          container.appendChild(el);
         });
-        card.style.animationDelay = (i * 0.08) + 's';
-        grid.appendChild(card);
       });
     })();
   </script>
-  <script src="js/main.js"></script>
 </body>
 </html>

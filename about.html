@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="About the composer — background, approach, and credits." />
-  <title>About | Composer</title>
+  <meta name="description" content="About — composer for games and film." />
+  <title>About | Composer for Games and Film</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -37,37 +37,46 @@
   </header>
 
   <main class="pt-24 md:pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
-      <h1 class="font-display text-4xl md:text-6xl font-light text-white mb-6 fade-in-up">About</h1>
-      <p class="text-white/70 text-lg leading-relaxed mb-8 fade-in-up stagger-1">
-        I write music for picture — film, television, and games. My work ranges from full orchestral scores to minimal electronic palettes, always in service of the story.
-      </p>
-      <p class="text-white/70 text-lg leading-relaxed mb-8 fade-in-up stagger-2">
-        Based between Los Angeles and London, I collaborate with directors and producers worldwide. Recent credits include narrative features, documentary series, and AAA game trailers.
-      </p>
-      <p class="text-white/70 text-lg leading-relaxed mb-12 fade-in-up stagger-3">
-        When I’m not in the studio, I’m usually exploring sound design, modular synthesis, or live performance. I believe the best scores are felt before they’re heard.
-      </p>
+    <div class="max-w-4xl mx-auto">
+      <h1 class="font-display text-4xl md:text-6xl font-light text-white mb-12 fade-in-up">About</h1>
 
-      <section class="border-t border-white/10 pt-12 fade-in-up stagger-4">
-        <h2 class="font-display text-2xl font-medium text-white mb-6">Selected Credits</h2>
-        <ul class="space-y-4 text-white/80">
-          <li class="flex flex-wrap gap-2"><span class="text-white/50">Feature</span> — Film Title (Director, Year)</li>
-          <li class="flex flex-wrap gap-2"><span class="text-white/50">Documentary</span> — Series Name (Network, Year)</li>
-          <li class="flex flex-wrap gap-2"><span class="text-white/50">Game</span> — Game Title — Trailer (Studio, Year)</li>
-          <li class="flex flex-wrap gap-2"><span class="text-white/50">Short</span> — Short Film (Director, Year)</li>
-        </ul>
-      </section>
-
-      <div class="mt-16 fade-in-up stagger-5">
-        <a href="contact.html" class="link-underline text-white/90 hover:text-white font-medium">Get in touch →</a>
+      <div class="grid md:grid-cols-3 gap-12 md:gap-16 items-start">
+        <div class="md:col-span-1 fade-in-up stagger-1">
+          <div class="aspect-[3/4] rounded-lg overflow-hidden bg-white/5 border border-white/10">
+            <img id="about-portrait" src="assets/images/portrait.jpg" alt="Composer portrait" class="w-full h-full object-cover" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex'">
+            <div id="portrait-placeholder" class="w-full h-full flex items-center justify-center text-white/30 text-6xl font-display" style="display:none">♪</div>
+          </div>
+          <p class="text-white/50 text-sm mt-4">Add your portrait: <code class="text-white/70">assets/images/portrait.jpg</code></p>
+        </div>
+        <div class="md:col-span-2 space-y-8">
+          <div class="fade-in-up stagger-2">
+            <h2 class="font-display text-2xl font-medium text-white mb-4">Bio</h2>
+            <p class="text-white/70 text-lg leading-relaxed">
+              I'm a composer for video games and film, focused on narrative-driven music that supports story and emotion. My work ranges from full orchestral scores to intimate electronic palettes and interactive game audio.
+            </p>
+          </div>
+          <div class="fade-in-up stagger-3">
+            <h2 class="font-display text-2xl font-medium text-white mb-4">Games & Film</h2>
+            <p class="text-white/70 text-lg leading-relaxed">
+              I've composed for AAA and indie games, short films, documentaries, and trailers. I work closely with directors and creative teams to create music that feels integral to the experience—whether that's adaptive game music, cinematic themes, or sound design that blurs the line between score and soundscape.
+            </p>
+          </div>
+          <div class="fade-in-up stagger-4">
+            <p class="text-white/70 text-lg leading-relaxed">
+              Based between Los Angeles and London, I'm always open to new collaborations. When I'm not in the studio, I'm exploring modular synthesis, field recording, and live performance.
+            </p>
+          </div>
+          <div class="pt-6 fade-in-up stagger-5">
+            <a href="contact.html" class="link-underline text-white/90 hover:text-white font-medium">Get in touch →</a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
   <footer class="border-t border-white/10 py-8 px-6">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <span class="text-white/60 text-sm">© 2025 Composer Portfolio.</span>
+      <span class="text-white/60 text-sm">© 2025 Composer.</span>
       <nav class="flex gap-6">
         <a href="index.html" class="text-white/60 hover:text-white text-sm transition-colors">Home</a>
         <a href="portfolio.html" class="text-white/60 hover:text-white text-sm transition-colors">Portfolio</a>
