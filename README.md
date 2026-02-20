@@ -231,3 +231,4 @@ git push origin main
 ## Tech
 
 - Tailwind CSS (CDN), vanilla JS, Google Fonts (Cormorant Garamond, Inter)
+# composer-portfolio
